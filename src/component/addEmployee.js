@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+<<<<<<< HEAD
 import axios from 'axios';
 import { createEmployee } from '../actions/employee'
 import { store } from '../store'
+=======
+import Grid from '@material-ui/core/Grid';
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
 
 class AddEmployee extends Component {
   handleChange(event) {
@@ -31,6 +35,7 @@ class AddEmployee extends Component {
   }
   render() {
     return (
+<<<<<<< HEAD
         <div>
           <form id = 'addEmp' onSubmit={this.addEmployee.bind(this)}>
             <p>Name: <input type= "text" name="name"  onChange={ this.handleChange}/></p>
@@ -41,6 +46,25 @@ class AddEmployee extends Component {
           </form>
 
         </div>
+=======
+      <Grid 
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}>
+        <div>
+          <form id = 'addEmp'>
+            <p>Name: <input type = "Text" id = "name"/></p>
+            <p>E-Mail: <input type = "Text" id = "email"/></p>
+          </form>
+          <Button variant="contained" color="primary">
+            <input type = "Submit" />
+          </Button>
+        </div>
+      </Grid>
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
     )
   }
 }

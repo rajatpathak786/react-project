@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+<<<<<<< HEAD
 import axios from 'axios';
 import { editEmployee } from '../actions/employee'
 import { store } from '../store'
@@ -43,5 +44,33 @@ class EditEmployee extends Component {
       </div>
     )    
   }
+=======
+import Grid from '@material-ui/core/Grid';
+
+class EditEmployee extends Component {
+render() {
+  return(
+    <Grid 
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}>
+      <div>
+        Edit Page:
+        <form id = "editEmp">
+          <p>Emp Id: <input type = "Number" id = "empId" /></p>
+          <p>Name: <input type = "Text" id = "name" /></p>
+          <p>E-Mail: <input type = "Text" id = "email" /></p>
+        </form>
+          <Button variant = "contained" color = "primary">
+            <input type = "Submit" />
+          </Button>
+      </div>
+    </Grid>
+  )    
+}
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
 }
 export default EditEmployee;

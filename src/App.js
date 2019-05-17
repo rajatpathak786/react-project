@@ -4,6 +4,7 @@ import AddEmployee from './component/addEmployee'
 import EditEmployee from './component/editEmployee'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+<<<<<<< HEAD
 import ListDetails from './component/listDetails' 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,11 +20,14 @@ import ListItem from '@material-ui/core/ListItem';
 //import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 //import classNames from 'classnames';
+=======
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
 
 function Home() {
   return <h2>You are on Home Page</h2>
 }
 
+<<<<<<< HEAD
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -82,6 +86,8 @@ const styles = theme => ({
     marginLeft: 0,
   },
 });
+=======
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
 
 class App extends Component {
   constructor(props){
@@ -105,6 +111,7 @@ class App extends Component {
     const { open } = this.state;
     return (
       <Router>
+<<<<<<< HEAD
         <div>
           <CssBaseline />
           <AppBar position="static">
@@ -159,6 +166,28 @@ class App extends Component {
             <Route path = "/list_details" exact component = {ListDetails} />
           </Grid>
         </div>  
+=======
+        <Grid 
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '100vh' }}>
+          <div>
+            <nav>
+              <Grid container justify = "center" spacing = {16}>
+                <label><Link to = "/">Home</Link></label>
+                <label><Link to = "/addEmp">AddEmployee</Link></label>
+                <label><Link to = "/editEmp">EditEmployee</Link></label>
+              </Grid>      
+            </nav>
+            <Route path = "/" exact component = {Home} />
+            <Route path = "/addEmp" exact component = {AddEmployee} />
+            <Route path = "/editEmp" exact component = {EditEmployee} />
+          </div>  
+        </Grid>
+>>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
       </Router>
     );
   }
