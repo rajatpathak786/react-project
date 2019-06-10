@@ -1,3 +1,13 @@
+MuiInput-underline-252:before {
+  left: 0;
+  right: 0;
+  bottom: +8px;
+  content: "\00a0";
+  position: absolute;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,8 +16,36 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* .MuiInputBase-root-261.MuiInput-root-248.MuiInput-underline-252.employeeName {
+  right: -30px;
+}
+button.MuiButtonBase-root-57.MuiButton-root-282.MuiButton-contained-293.MuiButton-containedPrimary-294.MuiButton-raised-296.MuiButton-raisedPrimary-297.addEmpTrainingButton {
+  right: -37px
+}
+.MuiInputBase-root-261.MuiInput-root-248.MuiInput-underline-252.reviewerName {
+  right: -35px;
+}
+.MuiInputBase-root-261.MuiInput-root-248.MuiInput-underline-252.moduleId {
+  right: -46px;
+} */
+.MuiGrid-container-144.MuiGrid-direction-xs-column-147.MuiGrid-align-items-xs-center-152.MuiGrid-justify-xs-center-161 {
+  padding-top: +64px;
+}
+/* table.MuiTable-root-473 {
+  align-self: center;
+  vertical-align: text-top;
+}
+h1 {
+  vertical-align: top;
+  align-content: center;
+}
+button.MuiButtonBase-root-57.MuiButton-root-309.MuiButton-contained-320.MuiButton-containedPrimary-321.MuiButton-raised-323.MuiButton-raisedPrimary-324 {
+  right: -27px;
+}
+button.MuiButtonBase-root-57.MuiButton-root-241.MuiButton-contained-252.MuiButton-containedPrimary-253.MuiButton-raised-255.MuiButton-raisedPrimary-256 {
+  right: -52px;
+} */

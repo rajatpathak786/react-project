@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import AddEmployee from './component/addEmployee'
-import EditEmployee from './component/editEmployee'
+import AddEmployee from './component/employee/addEmployee'
+import EditEmployee from './component/employee/editEmployee'
+import EditTasks from './component/task/editTasks'
+import AddTasks from './component/task/addTask'
+import ListTasks from './component/task/taskDetails'
+import AddModule from './component/module/addModule'
+import ListModule from './component/module/moduleDetails'
+import EditModule from './component/module/editModule'
+import AddEmployeeTraining from './component/employeeTraining/addEmpTraining'
+import AddDrift from './component/employeeTraining/addDrift'
+import EmpTrainingDetails from './component/employeeTraining/empTrainingDetails'
+import Home from './component/home'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-<<<<<<< HEAD
-import ListDetails from './component/listDetails' 
+import ListDetails from './component/employee/listDetails' 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -15,19 +24,20 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ListItem from '@material-ui/core/ListItem';
+import { appMenu } from './actions/employee'
 //import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-//import classNames from 'classnames';
-=======
->>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
+import { store } from './store';
+import classNames from 'classnames';
+import { ToastContainer } from 'react-toastify'; 
 
-function Home() {
-  return <h2>You are on Home Page</h2>
-}
+// function Home() {
+//   return <h2>You are on Home Page</h2>
+// }
 
-<<<<<<< HEAD
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -86,108 +96,137 @@ const styles = theme => ({
     marginLeft: 0,
   },
 });
-=======
->>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
 
 class App extends Component {
-  constructor(props){
-    super()
-    this.state = {
-      open: false 
-    };
-  }
   handleDrawerOpen = () => {
-    this.setState({
-      open: true
-    })
+    store.dispatch(appMenu({menu: true}))
+    console.log(store.getState())
   }
   handleDrawerClose = () => {
-    this.setState({
-      open: false
-    })
+    store.dispatch(appMenu({menu: false}))
+    console.log(store.getState())
   }
+
+
   render() {
-    const { classes, theme } = this.props;
-    const { open } = this.state;
+    var display ;
+    if (typeof store.getState() == "undefined") {
+      display = store.getState()
+    } else {
+      display = store.getState().menu
+    }
+     //const { classes, theme } = this.props;
+     const { classes } = this.props
+    // const { open } = this.state;
     return (
       <Router>
-<<<<<<< HEAD
         <div>
           <CssBaseline />
-          <AppBar position="static">
-            <Toolbar variant="dense">
-              <IconButton  color="inherit" aria-label="Menu" onClick = {this.handleDrawerOpen} >
+          <AppBar position="fixed"
+            className={classNames(classes.appBar,   {
+              [classes.appBarShift]: display,
+            })}>
+            <Toolbar>
+              <IconButton  color="inherit" aria-label="menu" onClick = {this.handleDrawerOpen} className={classNames(classes.menuButton, display && classes.hide)} >
               <MenuIcon />
               </IconButton>
               <Typography variant="h6" color="inherit">
                 Employee Training App 
               </Typography>
             </Toolbar>
-          </AppBar>
-          <Drawer variant="persistent" anchor="left" open={this.state.open} className={classes.drawer} >
-            <IconButton  color="inherit" aria-label="Menu" onClick = {this.handleDrawerClose}> 
-              <ChevronLeftIcon /> 
-            </IconButton>
+          <Drawer position = "static" variant="persistent" anchor="left" open={display}  classes={{paper: classes.drawerPaper, }} >
+            <div className={classes.drawerHeader}>
+              <IconButton  aria-label="Menu" onClick = {this.handleDrawerClose}> 
+                <ChevronLeftIcon /> 
+              </IconButton>
+            </div>  
             <Divider />
             <List>
               <ListItem button >
-                <ListItemText  ><Link to = "/">Home</Link></ListItemText>          
+                <ListItemText><Link to = "/">Home</Link></ListItemText>          
               </ListItem>
             </List>
             <Divider />
             <List>
               <ListItem button >
-                <ListItemText  ><Link to = "/add_emp">Add Employee</Link></ListItemText>          
+                <ListItemText><Link to = "/add_emp">Add Employee</Link></ListItemText>          
               </ListItem>
             </List>
             <Divider />
             <List>
               <ListItem button >
-                <ListItemText  ><Link to = "/edit_emp">Edit Employee</Link></ListItemText>          
+                <ListItemText><Link to = "/list_details">Employee Details</Link></ListItemText>          
               </ListItem>
             </List>
             <Divider />
             <List>
               <ListItem button >
-                <ListItemText  ><Link to = "/list_details">Employee Details</Link></ListItemText>          
+                <ListItemText><Link to = "/add_tasks">Add Tasks</Link></ListItemText>          
               </ListItem>
-            </List>    
-          </Drawer>  
+            </List>
+            <Divider />
+            <List>
+              <ListItem button >
+                <ListItemText><Link to = "/list_tasks">Task Details</Link></ListItemText>          
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button >
+                <ListItemText><Link to = "/add_module">Add Modules</Link></ListItemText>          
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button >
+                <ListItemText><Link to = "/list_module">Module Details</Link></ListItemText>          
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button >
+                <ListItemText><Link to = "/employee_training">Employee Training</Link></ListItemText>          
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button >
+                <ListItemText><Link to = "/employee_training_details">Employee Training Details</Link></ListItemText>          
+              </ListItem>
+            </List>         
+          </Drawer>
+          </AppBar>  
           <Grid 
             container
-            spacing={10}
+            spacing={2}
             direction="column"
             alignItems="center"
             justify="center"
-            style={{ minHeight: '50vh' }}>
+            style={{ minHeight: '52vh' }}
+            >
+            <ToastContainer 
+              position = "bottom-right"
+              autoClose = {false}
+              hideProgressBar= {true}
+              closeOnClick= {true}
+              pauseOnHover= {true}
+              draggable= {false}
+            />
             <Route path = "/" exact component = {Home} />
             <Route path = "/add_emp" exact component = {AddEmployee} />
-            <Route path = "/edit_emp" exact component = {EditEmployee} />
+            <Route path = "/edit_emp/:empId" component = {EditEmployee} /> 
             <Route path = "/list_details" exact component = {ListDetails} />
+            <Route path = "/add_tasks" exact component = {AddTasks} />
+            <Route path = "/list_tasks" exact component = {ListTasks} />
+            <Route path = "/edit_task/:taskId" exact component = {EditTasks} />
+            <Route path = "/add_module" exact component = {AddModule} />
+            <Route path = "/list_module" exact component = {ListModule} />
+            <Route path = "/edit_module/:moduleId" exact component = {EditModule} />
+            <Route path = "/employee_training" exact component = {AddEmployeeTraining} />
+            <Route path = "/employee_training_details" exact component = {EmpTrainingDetails} />
+            <Route path = "/add_drift/:empId/:taskId/:moduleId/:remTasks" exact component = {AddDrift} />
           </Grid>
         </div>  
-=======
-        <Grid 
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '100vh' }}>
-          <div>
-            <nav>
-              <Grid container justify = "center" spacing = {16}>
-                <label><Link to = "/">Home</Link></label>
-                <label><Link to = "/addEmp">AddEmployee</Link></label>
-                <label><Link to = "/editEmp">EditEmployee</Link></label>
-              </Grid>      
-            </nav>
-            <Route path = "/" exact component = {Home} />
-            <Route path = "/addEmp" exact component = {AddEmployee} />
-            <Route path = "/editEmp" exact component = {EditEmployee} />
-          </div>  
-        </Grid>
->>>>>>> b5dc14ac1a479dfb76b727856f1ea6b315604f4c
       </Router>
     );
   }
@@ -196,3 +235,5 @@ class App extends Component {
 export default withStyles(styles, { withTheme: true })(App);
 
 // export default App;
+
+

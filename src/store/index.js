@@ -1,8 +1,7 @@
 import {createStore} from 'redux'
-import reducer from '../reducers'
-const initialState = {
-  item : []
-}
+// import {employeeAdd, employeeDetails, employeeEdit} from '../reducers'
+import {reducer, initialState} from '../reducers'
+
 export const store = createStore(reducer, initialState)
 
 // import { createStore } from "redux";
